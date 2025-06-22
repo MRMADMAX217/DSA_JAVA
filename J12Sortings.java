@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class J12Sortings {
     public static void main(String[] args) {
          Scanner sc= new Scanner(System.in);
@@ -14,12 +14,17 @@ public class J12Sortings {
         // insertion=InsertionSort(array);
         // int[] selection=new int[array.length];
         // selection=SelectionSort(array);
-        int[] bubble=new int[array.length];
-        bubble=BubbleSort(array);
+        // int[] bubble=new int[array.length];
+        // bubble=BubbleSort(array);
+        // int[] merge=new int[array.length];
+        // Mergesort(array,0,array.length-1);
+        // int[] quick=new int[array.length];
+        Quicksort(array,0,array.length-1);
         System.err.println();
         // print(insertion);
         // print(selection);
-        print(bubble);
+        // print(bubble);
+        print(array);
         sc.close();
     }
     public static void Swap(int[] array,int a,int b){
@@ -63,5 +68,60 @@ public class J12Sortings {
             }
         }
         return arr;
+    }
+    public static void Mergesort(int[] arr,int low,int high){
+        if(low>=high) return;
+        int mid=(low+high)/2;
+        Mergesort(arr,low,mid);
+        Mergesort(arr,mid+1,high);
+        Merge(arr,low,mid,high);
+    }
+    public static void Merge(int[] arr,int low,int mid,int high){
+        int[] temp=new int[arr.length];
+        int left=low;
+        int right=mid+1;
+        int k=0;
+        while(left<=mid&&right<=high){
+            if(arr[left]<=arr[right]){
+                temp[k++]=arr[left++];
+            }
+            else{
+                temp[k++]=arr[right++];
+            }
+        }
+        while(left<=mid){
+            temp[k++]=arr[left++];
+        }
+        while(right<=high){
+            temp[k++]=arr[right++];
+        }
+        for(int i=low;i<=high;i++){
+            arr[i]=temp[i-low];
+        }
+    }
+    public static void Quicksort(int[] arr,int low,int high){
+        if(low<high){
+            int pivot=partion(arr,low,high);
+            Quicksort(arr, low, pivot-1);
+            Quicksort(arr, pivot+1, high);
+        }
+    }
+    public static int partion(int[] arr,int low,int high){
+        int pivot=arr[low];
+        int i=low;
+        int j=high;
+        while(i<j){
+            while(i<=high&&arr[i]<=pivot){
+                i++;
+            }
+            while(j>=low&&arr[j]>pivot){
+                j--;
+            }
+            if(i<j){
+                Swap(arr,i, j);
+            }
+        }
+        Swap(arr, low, j);
+        return j;
     }
 }
