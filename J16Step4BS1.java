@@ -5,17 +5,17 @@ public class J16Step4BS1 {
         Scanner sc= new Scanner(System.in);
         System.out.print("Enter number of elements in the array: ");
         int n=sc.nextInt();
-        int[] arr=new int[n];
-        System.out.print("Enter elements: ");
-        for(int i=0;i<n;i++){
-            int k=sc.nextInt();
-            arr[i]=k;
-        }
-        System.out.print("Array is : ");
-        for(int i:arr){
-            System.out.print(i+" ");
-        }
-        print1d(arr);
+        // int[] arr=new int[n];
+        // System.out.print("Enter elements: ");
+        // for(int i=0;i<n;i++){
+        //     int k=sc.nextInt();
+        //     arr[i]=k;
+        // }
+        // System.out.print("Array is : ");
+        // for(int i:arr){
+        //     System.out.print(i+" ");
+        // }
+        // print1d(arr);
         // System.out.print("\nEnter Target element: ");
         // int tar=sc.nextInt();
         // System.out.println((BinarySearchFunction(arr, tar)));
@@ -26,7 +26,7 @@ public class J16Step4BS1 {
         // print1d(firstlast);
         // System.out.println(count(arr, tar));
         // System.out.println(SingleElement(arr));
-        System.out.println(findPeakElement(arr));
+        // System.out.println(findPeakElement(arr));
         sc.close();
     }
     public static void print1d(int[] arr){
